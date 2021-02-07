@@ -378,8 +378,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        69.166,
-        49.856,
+        -48.339,
+        53.12,
         0,
         0,
         0,
@@ -487,14 +487,20 @@
     "_id": "1dHVRP0lxNMIX53Imar3ER"
   },
   {
-    "__type__": "01028a6EVZJn7lFveTPgesQ",
+    "__type__": "aac01haRFJI66NtNrOVnuE2",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 7
     },
     "_enabled": true,
-    "_id": "46xNG8UXdO6qv4uzJuN1js"
+    "jumpSpeed": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 300
+    },
+    "maxJumpDistance": 100,
+    "_id": "2fE8lMpcpDGZ53qS65qOf5"
   },
   {
     "__type__": "cc.Node",
