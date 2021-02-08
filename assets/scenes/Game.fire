@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        282.324281633727,
+        252.8794179050561,
         0,
         0,
         0,
@@ -379,7 +379,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -160,
+        -161,
         -110,
         0,
         0,
@@ -477,12 +477,12 @@
     "body": null,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.9,
       "y": 0
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 66,
+      "width": 44.7,
       "height": 66
     },
     "_id": "1dHVRP0lxNMIX53Imar3ER"
