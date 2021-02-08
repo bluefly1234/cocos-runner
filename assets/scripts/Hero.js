@@ -3,7 +3,7 @@ cc.Class({
 
   properties: {
     jumpSpeed: cc.v2({ x: 0, y: 300 }), // 加速度
-    maxJumpDistance: 100 // 跳躍高度上限
+    maxJumpDistance: 100, // 跳躍高度上限
   },
 
   // LIFE-CYCLE CALLBACKS:
@@ -61,9 +61,17 @@ cc.Class({
     this.isOnGround = true;
   },
 
-  // 監聽結束碰撞
+  // 監聽物理結束碰撞
   onEndContact() {
     this.isOnGround = false;
+  },
+
+  // 監聽碰撞
+  onCollisionEnter(other, self) {
+    if (other.node.name === "diamond") {
+      other.node.destroy();
+      this.node.emit("score");
+    }
   },
 
   update(dt) {
@@ -103,5 +111,5 @@ cc.Class({
         this.isJumpFinished = true;
       }
     }
-  }
+  },
 });
