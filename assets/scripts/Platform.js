@@ -6,8 +6,8 @@ cc.Class({
   properties: {
     tile: {
       default: null,
-      type: cc.Prefab
-    }
+      type: cc.Prefab,
+    },
   },
 
   // LIFE-CYCLE CALLBACKS:
@@ -17,10 +17,24 @@ cc.Class({
   start() {},
 
   update(dt) {
-    this.node.x -= 150 * dt;
+    if (this.active) {
+      this.node.x -= 150 * dt;
+
+      if (this.isPlatformOnOutScreen()) {
+        this.active = false;
+      }
+    }
+  },
+
+  isPlatformOnOutScreen() {
+    return this.node.x + this.node.width < -cc.winSize.width / 2;
   },
 
   init(tilesCount, x, y) {
+    this.active = true;
+    // 因為會重新使用本實例, 所以每次 init 前需要清除所有子節點
+    this.node.removeAllChildren();
+
     // 設定地板位置
     this.node.setPosition(cc.v2(x, y));
 
@@ -46,5 +60,5 @@ cc.Class({
     collider.size.height = this.node.height;
     collider.offset.x = this.node.width / 2 - tileSize / 2;
     collider.apply();
-  }
+  },
 });

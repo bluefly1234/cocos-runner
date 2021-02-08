@@ -4,14 +4,14 @@ cc.Class({
   properties: {
     platform: {
       default: null,
-      type: cc.Prefab
+      type: cc.Prefab,
     },
     tilesCountMin: 2,
     tilesCountMax: 6,
     xOffsetMin: 60,
     xOffsetMax: 200,
     yOffsetMin: -300,
-    yOffsetMax: 300
+    yOffsetMax: 300,
   },
 
   // LIFE-CYCLE CALLBACKS:
@@ -19,12 +19,14 @@ cc.Class({
   // onLoad () {},
 
   start() {
+    this.platforms = [];
     this.createPlatform({ tilesCount: 4, x: -200, y: -200 });
   },
 
   update(dt) {
     if (this.isPlatformOnRight()) {
       this.createPlatform();
+      cc.log("Platforms length: ", this.platforms.length);
     }
   },
 
@@ -45,7 +47,7 @@ cc.Class({
     const data = {
       tilesCount: 0,
       x: 0,
-      y: 0
+      y: 0,
     };
 
     // 取得 min ~ max 隨機 titlesCount
@@ -78,12 +80,21 @@ cc.Class({
     if (!data) {
       data = this.generateRandomData();
     }
-    // 實例化 platform prefab
-    const node = cc.instantiate(this.platform);
-    this.node.addChild(node);
 
-    // 取出 platform prefab 內綁定的 platform 腳本, 並儲存到 current
-    this.current = node.getComponent("Platform");
+    // 重 platforms 內取得 active = false 的 platform 實例來重新使用, 優化效能
+    const platform = this.platforms.find((platform) => !platform.active);
+    if (platform) {
+      this.current = platform;
+    } else {
+      // 實例化 platform prefab
+      const node = cc.instantiate(this.platform);
+      this.node.addChild(node);
+
+      // 取出 platform prefab 內綁定的 platform 腳本, 並儲存到 current
+      this.current = node.getComponent("Platform");
+      this.platforms.push(this.current);
+    }
+
     this.current.init(data.tilesCount, data.x, data.y);
-  }
+  },
 });
