@@ -180,7 +180,7 @@
       "array": [
         0,
         0,
-        252.8794179050561,
+        287.52043405643366,
         0,
         0,
         0,
@@ -579,7 +579,7 @@
     "tilesCountMin": 2,
     "tilesCountMax": 6,
     "xOffsetMin": 60,
-    "xOffsetMax": 200,
+    "xOffsetMax": 150,
     "yOffsetMin": -120,
     "yOffsetMax": 120,
     "_id": "afsp1/4tZFlqSLKfmAmsLO"

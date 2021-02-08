@@ -1,3 +1,5 @@
+import { getLimitRandom } from "../utils/index";
+
 cc.Class({
   extends: cc.Component,
 
@@ -9,7 +11,7 @@ cc.Class({
     tilesCountMin: 2,
     tilesCountMax: 6,
     xOffsetMin: 60,
-    xOffsetMax: 200,
+    xOffsetMax: 150,
     yOffsetMin: -300,
     yOffsetMax: 300,
   },
@@ -45,9 +47,6 @@ cc.Class({
     return currentPlatformRight < screenRight;
   },
 
-  getLimitRandom(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  },
   // 依據 min、max 配置值
   // 依據上一個產生的 platform 位置為基準延伸
   // 需限制在螢幕一定範圍內
@@ -59,7 +58,7 @@ cc.Class({
     };
 
     // 取得 min ~ max 隨機 titlesCount
-    const randomTilesCount = this.getLimitRandom(
+    const randomTilesCount = getLimitRandom(
       this.tilesCountMin,
       this.tilesCountMax
     );
@@ -67,13 +66,13 @@ cc.Class({
 
     // 取得 min ~ max 隨機 x
     // 並從上一個 platform 位置朝右邊新增
-    const randomXOffset = this.getLimitRandom(this.xOffsetMin, this.xOffsetMax);
+    const randomXOffset = getLimitRandom(this.xOffsetMin, this.xOffsetMax);
     data.x = this.current.node.x + this.current.node.width + randomXOffset;
 
     // 取得 min ~ max 隨機 x
     // 最高可出現位置：螢幕最高點扣除 platform 高度 * 2
     // 最低可出現位置：螢幕最底部加上 platform 高度
-    const randomYOffset = this.getLimitRandom(this.yOffsetMin, this.yOffsetMax);
+    const randomYOffset = getLimitRandom(this.yOffsetMin, this.yOffsetMax);
     const screenTop = cc.winSize.height / 2;
     const screenBottom = -cc.winSize.height / 2;
     let y = this.current.node.y + randomYOffset;

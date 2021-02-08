@@ -1,9 +1,17 @@
+import { getLimitRandom } from "../utils/index";
+
 const tileSize = 64;
 
 cc.Class({
   extends: cc.Component,
 
   properties: {
+    coinsOffsetMin: 100,
+    coinsOffsetMax: 200,
+    diamond: {
+      default: null,
+      type: cc.Prefab,
+    },
     tile: {
       default: null,
       type: cc.Prefab,
@@ -24,6 +32,18 @@ cc.Class({
         this.active = false;
       }
     }
+  },
+
+  createDiamonds() {
+    const yOffset = getLimitRandom(this.coinsOffsetMin, this.coinsOffsetMax);
+    this.node.children.forEach((tile) => {
+      // 40 % 機率產生鑽石
+      if (Math.random() <= 0.4) {
+        const diamond = cc.instantiate(this.diamond);
+        tile.addChild(diamond);
+        diamond.setPosition(0, yOffset);
+      }
+    });
   },
 
   isPlatformOnOutScreen() {
@@ -60,5 +80,8 @@ cc.Class({
     collider.size.height = this.node.height;
     collider.offset.x = this.node.width / 2 - tileSize / 2;
     collider.apply();
+
+    // 創建鑽石
+    this.createDiamonds();
   },
 });
