@@ -1,7 +1,18 @@
+import Globals from "./Globals";
+
 cc.Class({
   extends: cc.Component,
 
-  properties: {},
+  properties: {
+    hero: {
+      default: null,
+      type: cc.Node
+    },
+    score: {
+      default: null,
+      type: cc.Label
+    }
+  },
 
   // LIFE-CYCLE CALLBACKS:
 
@@ -9,6 +20,11 @@ cc.Class({
     this.enablePhysics();
     this.enableCollision();
     this.enablePhysicsDebug();
+
+    // 監聽 hero 觸發 score 事件
+    this.hero.on("score", () => {
+      this.handleAddScore();
+    });
   },
 
   // 啟用物理引擎
@@ -31,7 +47,12 @@ cc.Class({
       cc.PhysicsManager.DrawBits.e_shapeBit;
   },
 
-  start() {},
+  handleAddScore() {
+    Globals.score++;
+    this.score.string = Globals.score.toString();
+  },
+
+  start() {}
 
   // update (dt) {},
 });
