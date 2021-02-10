@@ -4,6 +4,10 @@ cc.Class({
   properties: {
     jumpSpeed: cc.v2({ x: 0, y: 300 }), // 加速度
     maxJumpDistance: 100, // 跳躍高度上限
+    jumpSprite: {
+      default: null,
+      type: cc.SpriteFrame
+    }
   },
 
   // LIFE-CYCLE CALLBACKS:
@@ -48,6 +52,8 @@ cc.Class({
 
   // 數據初始化時機
   start() {
+    this.animation = this.node.getComponent(cc.Animation);
+    this.sprite = this.node.getComponent(cc.Sprite);
     this.body = this.getComponent(cc.RigidBody);
     this.isOnGround = false;
     this.isJumping = false;
@@ -78,6 +84,8 @@ cc.Class({
     if (this.isJumpKeyPressed) {
       this.jump();
     }
+
+    this.animate();
   },
 
   /* 跳躍邏輯
@@ -112,4 +120,18 @@ cc.Class({
       }
     }
   },
+
+  animate() {
+    const isPlaying = this.animation.getAnimationState("running").isPlaying;
+
+    // hero 跑在地板上, 且 animation 尚未 play
+    if (this.isOnGround && !isPlaying) {
+      this.animation.start("running");
+    }
+    // hero 跳耀中, 且 animation 是 playing 狀態
+    if (!this.isOnGround && isPlaying) {
+      this.animation.stop();
+      this.sprite.spriteFrame = this.jumpSprite;
+    }
+  }
 });

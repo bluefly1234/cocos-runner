@@ -19,7 +19,7 @@ cc.Class({
   onLoad() {
     this.enablePhysics();
     this.enableCollision();
-    this.enablePhysicsDebug();
+    // this.enablePhysicsDebug();
 
     // 監聽 hero 觸發 score 事件
     this.hero.on("score", () => {

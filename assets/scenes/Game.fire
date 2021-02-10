@@ -78,19 +78,22 @@
         "__id__": 7
       },
       {
-        "__id__": 13
+        "__id__": 14
+      },
+      {
+        "__id__": 16
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 15
+        "__id__": 18
       },
       {
-        "__id__": 16
+        "__id__": 19
       },
       {
-        "__id__": 17
+        "__id__": 20
       }
     ],
     "_prefab": null,
@@ -180,7 +183,7 @@
       "array": [
         0,
         0,
-        287.52043405643366,
+        282.324281633727,
         0,
         0,
         0,
@@ -357,6 +360,9 @@
       },
       {
         "__id__": 12
+      },
+      {
+        "__id__": 13
       }
     ],
     "_prefab": null,
@@ -382,8 +388,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -5.406,
-        -58.517,
+        -81.937,
+        -54.489,
         0,
         0,
         0,
@@ -504,6 +510,9 @@
       "y": 300
     },
     "maxJumpDistance": 100,
+    "jumpSprite": {
+      "__uuid__": "9a34e453-ec15-4d1c-bbcb-b18a7cdd050d"
+    },
     "_id": "2fE8lMpcpDGZ53qS65qOf5"
   },
   {
@@ -528,6 +537,25 @@
     "_id": "98RjC8PxFHJIY1oT8WX5B7"
   },
   {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 7
+    },
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "42731ffb-6207-469c-a6ba-a0c86ee44c35"
+    },
+    "_clips": [
+      {
+        "__uuid__": "42731ffb-6207-469c-a6ba-a0c86ee44c35"
+      }
+    ],
+    "playOnLoad": true,
+    "_id": "b1nlRfSolG0pJTHuxxfX6D"
+  },
+  {
     "__type__": "cc.Node",
     "_name": "platforms",
     "_objFlags": 0,
@@ -538,7 +566,7 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 14
+        "__id__": 15
       }
     ],
     "_prefab": null,
@@ -594,7 +622,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 13
+      "__id__": 14
     },
     "_enabled": true,
     "platform": {
@@ -607,6 +635,100 @@
     "yOffsetMin": -120,
     "yOffsetMax": 120,
     "_id": "afsp1/4tZFlqSLKfmAmsLO"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "score",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 2
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 17
+      }
+    ],
+    "_prefab": null,
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 0,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 44.49,
+      "height": 180.8
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        -333.12,
+        188.943,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_is3DNode": false,
+    "_groupIndex": 0,
+    "groupIndex": 0,
+    "_id": "52EFaYdbhEuKfmJhs67s1Y"
+  },
+  {
+    "__type__": "cc.Label",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 16
+    },
+    "_enabled": true,
+    "_materials": [
+      {
+        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+      }
+    ],
+    "_useOriginalSize": false,
+    "_string": "0\n",
+    "_N$string": "0\n",
+    "_fontSize": 80,
+    "_lineHeight": 80,
+    "_enableWrapText": true,
+    "_N$file": null,
+    "_isSystemFontUsed": true,
+    "_spacingX": 0,
+    "_batchAsBitmap": false,
+    "_styleFlags": 0,
+    "_underlineHeight": 0,
+    "_N$horizontalAlign": 1,
+    "_N$verticalAlign": 1,
+    "_N$fontFamily": "Arial",
+    "_N$overflow": 0,
+    "_N$cacheMode": 0,
+    "_id": "62rHuniY1H3Le+iwZoymSv"
   },
   {
     "__type__": "cc.Canvas",
@@ -660,6 +782,12 @@
       "__id__": 2
     },
     "_enabled": true,
+    "hero": {
+      "__id__": 7
+    },
+    "score": {
+      "__id__": 17
+    },
     "_id": "f63EFicjhP1JFLy0uAVhZd"
   }
 ]
