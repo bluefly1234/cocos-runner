@@ -86,6 +86,10 @@ cc.Class({
     }
 
     this.animate();
+
+    if (this.node.y < -cc.winSize.height / 2) {
+      this.node.emit("die");
+    }
   },
 
   /* 跳躍邏輯

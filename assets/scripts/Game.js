@@ -25,6 +25,11 @@ cc.Class({
     this.hero.on("score", () => {
       this.handleAddScore();
     });
+
+    // 監聽 hero 觸發 die 事件, 只觸發一次
+    this.hero.once("die", () => {
+      cc.director.loadScene("Score");
+    });
   },
 
   // 啟用物理引擎
@@ -52,7 +57,9 @@ cc.Class({
     this.score.string = Globals.score.toString();
   },
 
-  start() {}
+  start() {
+    Globals.score = 0;
+  }
 
   // update (dt) {},
 });
