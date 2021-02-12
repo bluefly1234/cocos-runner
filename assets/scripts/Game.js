@@ -11,12 +11,21 @@ cc.Class({
     score: {
       default: null,
       type: cc.Label
+    },
+    music: {
+      default: null,
+      type: cc.AudioClip
+    },
+    sound: {
+      default: null,
+      type: cc.AudioClip
     }
   },
 
   // LIFE-CYCLE CALLBACKS:
 
   onLoad() {
+    this.startPlayMusic();
     this.enablePhysics();
     this.enableCollision();
     // this.enablePhysicsDebug();
@@ -53,12 +62,23 @@ cc.Class({
   },
 
   handleAddScore() {
+    cc.audioEngine.play(this.sound);
     Globals.score++;
     this.score.string = Globals.score.toString();
   },
 
+  startPlayMusic() {
+    if (!cc.audioEngine.isMusicPlaying()) {
+      cc.audioEngine.playMusic(this.music, true);
+    }
+  },
+
   start() {
     Globals.score = 0;
+  },
+
+  onDestroy() {
+    cc.audioEngine.stopMusic();
   }
 
   // update (dt) {},
